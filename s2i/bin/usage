@@ -1,0 +1,4 @@
+#!/bin/sh
+cat <<EOF
+This is a S2I builder image for Sample site on PHP + Apache.
+EOF

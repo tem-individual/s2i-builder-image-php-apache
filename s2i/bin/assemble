@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Prereq
+#  * Source contents are aligned with the following directories:
+# repo_root
+# ├── index.html
+# └── php
+#     ├── insert.php
+#     └── view.php
+
+root_dir=/var/www/html
+php_dir=${root_dir}/php
+mkdir ${php_dir}
+
+# Copy html and php files
+echo "Copying html and php source code..."
+if [ -d /tmp/src ]; then
+  if $(ls /tmp/src/*.html > /dev/null 2>&1); then
+    cp -pvr /tmp/src/*.html ${root_dir}
+  fi
+  if $(ls /tmp/src/php/*.php > /dev/null 2>&1); then
+    cp -pvr /tmp/src/php/*.php ${php_dir}
+  fi
+fi
+
+# Delete source
+echo "Deleting source files..."
+rm -rf /tmp/src
+
+echo "...done"
